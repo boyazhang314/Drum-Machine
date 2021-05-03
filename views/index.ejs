@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@500&display=swap" rel="stylesheet">
+    <script>
+        const currentSong = <%- JSON.stringify(locals.song) || 'undefined' %>
+    </script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+    <script src="/script.js" defer></script>
+    <title>DrumMachine</title>
+</head>
+<body>
+    <div class="buttons">
+        <% if (locals.song == null) { %>
+            <button class="record-button btn">Record</button>
+            <button class="save-button btn">Save</button>
+        <% } else { %>
+            <a href="/" class="btn return">Record New Song</a>
+        <% } %>
+        <button class="play-button btn <%= locals.song != null ? 'show' : ''%>">Play</button>
+    </div>
+    <a href="#" class="btn song-link">View Song</a>
+    <div class="bdy">
+        <div id="row1" class="row">
+            <div data-note="bass" class="drum r1"></div>
+            <div data-note="snare" class="drum r1"></div>
+            <div data-note="crossStick" class="drum r1"></div>
+            <div data-note="closedHH" class="drum r1"></div>
+            <div data-note="openHH" class="drum r1"></div>
+            <div data-note="crashCymbal" class="drum r1"></div>
+            <div data-note="ride" class="drum r1"></div>
+            <div data-note="rideBell" class="drum r1"></div>
+        </div>
+        <div id="row2" class="row">
+            <div data-note="highTom" class="drum r2"></div>
+            <div data-note="midTom" class="drum r2"></div>
+            <div data-note="lowTom" class="drum r2"></div>
+            <div data-note="floorTom" class="drum r2"></div>
+            <div data-note="splash" class="drum r2"></div>
+            <div data-note="wackCrash" class="drum r2"></div>
+            <div data-note="wackRide" class="drum r2"></div>
+            <div data-note="cowbell" class="drum r2"></div>
+        </div>
+        <div id="row3" class="row">
+            <div data-note="claves" class="drum r3"></div>
+            <div data-note="guiro" class="drum r3"></div>
+            <div data-note="timbaleH" class="drum r3"></div>
+            <div data-note="timbaleL" class="drum r3"></div>
+            <div data-note="cabasa" class="drum r3"></div>
+            <div data-note="castanet" class="drum r3"></div>
+            <div data-note="bamboo" class="drum r3"></div>
+            <div data-note="bottle" class="drum r3"></div>
+        </div>
+        <div id="row3" class="row">
+            <div data-note="marimba" class="drum r4"></div>
+            <div data-note="glock" class="drum r4"></div>
+            <div data-note="xylo" class="drum r4"></div>
+            <div data-note="vibra" class="drum r4"></div>
+            <div data-note="triM" class="drum r4"></div>
+            <div data-note="triO" class="drum r4"></div>
+            <div data-note="whistle" class="drum r4"></div>
+            <div data-note="sleighBell" class="drum r4"></div>
+        </div>
+    </div>
+
+    <audio id="bass" src="https://freewavesamples.com/files/Bass-Drum-1.wav"></audio>
+    <audio id="snare" src="https://freewavesamples.com/files/Ensoniq-ESQ-1-Snare.wav"></audio>
+    <audio id="closedHH" src="https://freewavesamples.com/files/Closed-Hi-Hat-1.wav"></audio>
+    <audio id="openHH" src="https://freewavesamples.com/files/Ensoniq-SQ-1-Open-Hi-Hat.wav"></audio>
+    <audio id="crashCymbal" src="https://freewavesamples.com/files/Crash-Cymbal-1.wav"></audio>
+    <audio id="ride" src="https://freewavesamples.com/files/Kawai-K11-Bob-Ride-Cymbal.wav"></audio>
+    <audio id="rideBell" src="https://freewavesamples.com/files/Korg-N1R-Ride-Bell.wav"></audio>
+    <audio id="highTom" src="https://freewavesamples.com/files/Hi-Tom-1.wav"></audio>
+    <audio id="midTom" src="https://freewavesamples.com/files/Korg-N1R-Mid-Tom.wav"></audio>
+    <audio id="lowTom" src="https://freewavesamples.com/files/Korg-N1R-Low-Tom.wav"></audio>
+    <audio id="floorTom" src="https://freewavesamples.com/files/Floor-Tom-1.wav"></audio>
+    <audio id="splash" src="https://freewavesamples.com/files/M-Audio-Venom-Splash-Cymbal.wav"></audio>
+    <audio id="powCrash" src="https://freewavesamples.com/files/Korg-NS5R-Power-Crash-Cymbal-2.wav"></audio>
+    <audio id="wackCrash" src="https://freewavesamples.com/files/E-Mu-Proteus-FX-Wacky-Crash-Cymbal.wav"></audio>
+    <audio id="wackRide" src="https://freewavesamples.com/files/E-Mu-Proteus-FX-Wacky-Ride-Cymbal.wav"></audio>
+    <audio id="clap" src="https://freewavesamples.com/files/Clap-1.wav"></audio>
+    <audio id="cowbell" src="https://freewavesamples.com/files/Cowbell-1.wav"></audio>
+    <audio id="crossStick" src="https://freewavesamples.com/files/Cross-Sticks.wav"></audio>
+    <audio id="bamboo" src="https://freewavesamples.com/files/Bamboo.wav"></audio>
+    <audio id="bottle" src="https://freewavesamples.com/files/Bottle.wav"></audio>
+    <audio id="sleighBell" src="https://freewavesamples.com/files/Kawai-K11-Sleigh-Bells.wav"></audio>
+    <audio id="klank" src="https://freewavesamples.com/files/Klank-1.wav"></audio>
+    <audio id="slap" src="https://freewavesamples.com/files/Korg-DS8-Slap-Noise.wav"></audio>
+    <audio id="whistle" src="https://freewavesamples.com/files/Korg-N1R-Long-Whistle.wav"></audio>
+    <audio id="claves" src="https://freewavesamples.com/files/Claves.wav"></audio>
+    <audio id="guiro" src="https://freewavesamples.com/files/Guiro.wav"></audio>
+    <audio id="timbaleH" src="https://freewavesamples.com/files/High-Timbales.wav"></audio>
+    <audio id="timbaleL" src="https://freewavesamples.com/files/Kawai-K11-Low-Timbale.wav"></audio>
+    <audio id="cabasa" src="https://freewavesamples.com/files/Korg-N1R-Cabasa.wav"></audio>
+    <audio id="castanet" src="https://freewavesamples.com/files/Korg-N1R-Castanets.wav"></audio>
+    <audio id="marimba" src="https://freewavesamples.com/files/E-Mu-Proteus-FX-Marimba-C3.wav"></audio>
+    <audio id="glock" src="https://freewavesamples.com/files/E-Mu-Proteus-2-Glockenspiel-C4.wav"></audio>
+    <audio id="xylo" src="https://freewavesamples.com/files/Kawai-XD-5-Xylophone-C5.wav"></audio>
+    <audio id="vibra" src="https://freewavesamples.com/files/Korg-01W-Vibraphone-C5.wav"></audio>
+    <audio id="triM" src="https://freewavesamples.com/files/Kawai-K11-Mute-Triangle.wav"></audio>
+    <audio id="triO" src="https://freewavesamples.com/files/Kawai-K11-Open-Triangle.wav"></audio>
+</body>
+</html>

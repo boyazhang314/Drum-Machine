@@ -1,0 +1,138 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    background-image: linear-gradient(#16181C, #202327, #16181C);
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.bdy {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.row {
+    display: flex;
+}
+
+.drum {
+    height: 13vh;
+    width: 13vh;
+    background-image: linear-gradient(rgb(22, 20, 27), rgb(4, 2, 8));
+    border-radius: 25px;
+    margin: 10px;
+    box-shadow: inset 0px 0px 0px 1px rgba(0, 0, 0, 0.65),
+                inset 0px 0px 0px 2px rgba(255, 255, 255, 0.035),
+                inset 0px 5px 20px -10px rgba(255, 255, 255, 0.25),
+                inset 0px -5px 20px -10px black;
+}
+
+.drum.active {
+    background-image: linear-gradient(rgb(68, 19, 19), rgb(126, 39, 39));
+    box-shadow: outset 0px 0px 0px 1px black,
+                outset 0px 0px 0px 2px black,
+                outset 0px 5px 20px -10px black,
+                outset 0px -5px 20px -10px black;
+}
+
+
+.r1 {
+    border: 10px solid rgb(17, 6, 39);
+}
+
+.r2 {
+    border: 10px solid rgb(20, 2, 56);
+}
+
+.r3 {
+    border: 10px solid rgb(26, 2, 73);
+}
+
+.r4 {
+    border: 10px solid rgb(29, 1, 87);
+}
+
+
+.buttons,
+.song-link {
+    margin-bottom: 0rem;
+    display: flex;
+}
+
+.btn {
+    --hue: 100;
+    --saturation: 100%;
+    padding: .5rem 1rem;
+    border-radius: 12px;
+    background-color: hsl(var(--hue), var(--saturation), 50%);
+    font-size: 2rem;
+    font-family: 'Montserrat Alternates', sans-serif;
+    margin-left: 1rem;
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: inset 0px 0px 0px 1px rgba(0, 0, 0, 0.65),
+                inset 0px 0px 0px 2px rgba(255, 255, 255, 0.035),
+                inset 0px 5px 20px -10px rgba(255, 255, 255, 0.25),
+                inset 0px -5px 20px -10px rgb(255, 255, 255);
+}
+
+.song-link {
+    font-size: 2rem;
+    font-family: 'Montserrat Alternates', sans-serif;
+    background-image: linear-gradient(rgb(54, 52, 156), rgb(66, 53, 122));
+}
+
+.return {
+    font-size: 2rem;
+    font-family: 'Montserrat Alternates', sans-serif;
+    background-image: linear-gradient(rgb(54, 52, 156), rgb(66, 53, 122));
+}
+
+.btn:first-child {
+    margin-left: 0;
+}
+
+.record-button {
+    --hue: 0;
+    --saturation: 0%;
+}
+
+.record-button.active {
+    --saturation: 100%;
+    box-shadow: outset 0px 0px 0px 1px black,
+                outset 0px 0px 0px 2px black,
+                outset 0px 5px 20px -10px black,
+                outset 0px -5px 20px -10px black;
+}
+
+.btn:hover,
+.btn:focus {
+    background-color: hsl(var(--hue), var(--saturation), 30%);
+    box-shadow: outset 0px 0px 0px 1px black,
+                outset 0px 0px 0px 2px black,
+                outset 0px 5px 20px -10px black,
+                outset 0px -5px 20px -10px black;
+}
+
+.play-button,
+.save-button,
+.song-link {
+    display: none;
+}
+
+.play-button.show,
+.save-button.show,
+.song-link.show {
+    display: block;
+}
+
+
